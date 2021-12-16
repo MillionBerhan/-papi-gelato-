@@ -29,7 +29,7 @@ kieshouders = None
 print('Welkom bij Papi Gelato')
 gebruiksersnaam = input('Wat is uw naam?')
 
-def geforceerde_input(vraag: str, toegestaan: list[str], niet_goed_bericht: str = 'Sorry, dat begreep ik niet.') -> str: # hier wotdt er
+def geforceerde_input(vraag: str, toegestaan: list[str], niet_goed_bericht: str = 'Sorry dat is geen optie die we aanbieden...') -> str: # hier wotdt er
     while not ((antwoord := input(vraag).lower()) in toegestaan):
         print(niet_goed_bericht)
 
@@ -47,7 +47,7 @@ def zakelijk():
         aantalliter = int(input("Hoeveel liters ijs wilt u?"))
         for z in range (aantalliter): # hier wordt een loop gebruikt
             w += 1
-            kiessmaak = geforceerde_input(f"voor welke smaak wilt u voor liter  nummer {w}? \nA) Aardbei \nC) Chocolade\nM) Munt of \nV) Vanille",['a', 'c', 'm', 'v']) # smaken voor de aantal liters
+            kiessmaak = geforceerde_input(f"voor welke smaak wilt u voor liter  nummer {w}? \nA) Aardbei \nC) Chocolade\nV) Vanille",['a', 'c','v']) # smaken voor de aantal liters
         smaakjeskiezen()
         bonnetje()
         exit()
@@ -83,13 +83,11 @@ def programmaopleveren():
 def smaakjeskiezen():
     global kiessmaak
     for i in range(aantalbolletje):
-        kiessmaak = geforceerde_input(f"Welke smaak wilt u voor bolletje nummer {i + 1}? \nA) Aardbei \nC) Chocolade\nM) Munt of \nV) Vanille",['a', 'c', 'm', 'v']) # er wordt hier gevraagd naar de smaken die de klant per bolletje wilt
+        kiessmaak = geforceerde_input(f"Welke smaak wilt u voor bolletje nummer {i + 1}? \nA) Aardbei \nC) Chocolade\nV) Vanille",['a', 'c', 'v']) # er wordt hier gevraagd naar de smaken die de klant per bolletje wilt
         if kiessmaak == "a":
             print ("U heeft voor aardbei gekozen") #hier kiezen ze voor aardbei
         elif kiessmaak == "c":
             print ("u heeft voor chocolade gekozen") #hier kiezen ze voor choco
-        elif kiessmaak == "m":
-            print ("u heeft voor munt gekozen") # hier kiezen ze voor munt
         else:
             print ("U heeft voor vanille gekozen") # en tot slot voor vanille
 
@@ -136,23 +134,23 @@ def bonnetje():# hier worden de prijzen van de klanten berekend van zijn/haar be
     print ("--------------------------Papi Gelato--------------------------")
     if kieshouders == "bakje":
         print (f"bakje(s):    {float(aantalbakjes)} x {0.75} = {aantalbakjes*0.75}") # hier wordt de prijs van de aantal bolletjes berekend in deze functie
-        print (f" bolletje(s):{float(aantalbolletje)} x {1.10} = {aantalbolletje*1.10}")
+        print (f" bolletje(s):{float(aantalbolletje)} x {0.95} = {aantalbolletje*0.95}")
         print (f"toppingen: {toppingsprijs}  ")
         print ("totaalprijs:----------------------------------------=")
-        print (f"             {float(aantalbakjes*0.75+aantalbolletje*1.10+toppingsprijs)}")
+        print (f"             {float(aantalbakjes*0.75+aantalbolletje*0.95+toppingsprijs)}")
     elif kieshouders == "hoorntje":
         print (f"horrentjes:  {float(aantalhorrentjes)} x {1.25} = {aantalhorrentjes*1.25}")# hier wordt de prijs van de horrentjes berekend in deze functie
-        print (f"bolletje(s): {float(aantalbolletje)} x {1.10} = {aantalbolletje*1.10}")
+        print (f"bolletje(s): {float(aantalbolletje)} x {0.95} = {aantalbolletje*0.95}")
         print (f"topping: {toppingsprijs} ")
         print ("totaalprijs:----------------------------------------+=")
-        print (f"             {float(aantalhorrentjes*1.25+aantalbolletje*1.10+toppingsprijs)}")
+        print (f"             {float(aantalhorrentjes*1.25+aantalbolletje*0.95+toppingsprijs)}")
         print (f"klant:{gebruiksersnaam}")
         print ("geholpen door: Million Berhan")
         print (f"----------------------{dezedag}----------------------------") # datum en tijdstip van deze bestelling
     elif soortklant == "b":
         print (f"liters: {aantalliter} x {litersprijs}  =  {aantalliter*litersprijs} ")
         print (f" totaalprijs:                             ={aantalliter*litersprijs}")
-        print (f"BTW (9%):                           {aantalliter*litersprijs/100*9} ")
+        print (f"BTW (6%):                           {aantalliter*litersprijs/100*6} ")
         print (f"klant:{gebruiksersnaam}")
         print ("geholpen door: Million Berhan")
         print (f"----------------------{dezedag}----------------------------") # datum en tijdstip van deze bestelling
